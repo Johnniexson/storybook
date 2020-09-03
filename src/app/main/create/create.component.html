@@ -1,0 +1,83 @@
+<div class="p-3">
+  <form [formGroup]="form">
+    <div class="field">
+      <label class="label">Summary</label>
+      <div class="control">
+        <input type="text" class="input" formControlName="summary" placeholder="e.g A trip to Moon">
+      </div>
+      <small class="warn" *ngIf="controls.summary.invalid && controls.summary.touched">
+        This is <strong>required</strong>
+      </small>
+    </div>
+
+    <div class="field">
+      <label class="label">Description</label>
+      <div class="control">
+        <textarea class="textarea" formControlName="description"></textarea>
+      </div>
+      <small class="warn" *ngIf="controls.description.invalid && controls.description.touched">
+        This is <strong>required</strong>
+      </small>
+    </div>
+
+    <div class="field">
+      <label class="label">Types</label>
+      <div class="control">
+        <div class="select">
+          <select formControlName="type">
+            <option value="">Select Type</option>
+            <option *ngFor="let type of types" value="type">{{type}}</option>
+          </select>
+        </div>
+      </div>
+      <small class="warn" *ngIf="controls.type.invalid && controls.type.touched">
+        This is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label class="label">Complexity</label>
+      <div class="control">
+        <div class="select">
+          <select formControlName="complexity">
+            <option value="">Select Complexity</option>
+            <option *ngFor="let complexity of complexities" value="complexity">{{complexity}}</option>
+          </select>
+        </div>
+      </div>
+      <small class="warn" *ngIf="controls.complexity.invalid && controls.complexity.touched">
+        This is required.
+      </small>
+    </div>
+    <div class="field">
+      <label class="label">Estimated Completion Time</label>
+      <div class="control">
+        <input class="input" type="number" formControlName="estimatedHrs" placeholder="">
+      </div>
+      <small class="warn" *ngIf="controls.estimatedHrs.invalid && controls.estimatedHrs.touched">
+        This is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label class="label">Cost</label>
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>$</option>
+            </select>
+          </span>
+        </p>
+        <p class="control">
+          <input class="input" type="number" formControlName="cost" placeholder="0">
+        </p>
+      </div>
+      <small class="warn" *ngIf="controls.cost.invalid && controls.cost.touched">
+        This is required.
+      </small>
+    </div>
+  </form>
+  <button type="button" class="btn btn-sm btn-primary" (click)="submit()" [disabled]="form.invalid">Submit</button>
+
+</div>
